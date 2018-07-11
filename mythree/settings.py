@@ -24,6 +24,21 @@ SECRET_KEY = 'mvtx9s$^7^=owz(o(sn##8cwv9vu43dug1p_9%j18)xyl1qa*e'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
 
 ALLOWED_HOSTS = []
 
@@ -49,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',    # 追加した
 ]
 
 ROOT_URLCONF = 'mythree.urls'
@@ -82,13 +98,21 @@ WSGI_APPLICATION = 'mythree.wsgi.application'
     #}
 ###}
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'mythree',
+#        'USER': 'osuossu',
+#        'PASSWORD' : '1EC13037t',
+#        'HOST': '127.0.0.1',
+#        'PORT': 5432,
+#    }
+#}
+
+import dj_database_url
+db_from_env = dj_database_url.config()
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'mythree',
-        'USER': 'osuossu',
-        'PASSWORD' : '1EC13037t',
-    }
+    'default': dj_database_url.config()
 }
 
 
@@ -134,20 +158,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-
-###
-import dj_database_url
-DATABASES['default'] = dj_database_url.config()
-
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-
-ALLOWED_HOSTS = ['*']
-
-STATIC_ROOT = 'staticfiles'
-
-DEBUG = False
-
-try:
-    from .local_settings import *
-except ImportError:
-    pass
