@@ -1,0 +1,14 @@
+
+{% if latest_song_list %}
+  <ul>
+    {% for singer in latest_singer_list %}
+        <li><a href="/apps/{{ singer.id }}/">{{ singer.singer_name}}</a></li>
+    {% endfor %}
+  </ul>
+
+{% else %}
+    <p>No songs are available.</p>
+{% endif %}
+
+</br>
+<a href="{% url 'apps:index' %}">go to timeline</a>

@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+
+{% block body %}
+
+        <div class="page-header">
+            <h1 id="timeline">Timeline</h1>
+        </div>
+
+    <div class="container">
+            {% if latest_singer_list %}
+
+                {% for singer in latest_singer_list %}
+
+            <ul class="timeline">
+                    <li>
+                      <div class="timeline-badge success"><i class="glyphicon glyphicon-check"></i></div>
+                      <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">
+                              <p class="text-info">{{ singer.singer_name}}</p>
+                        <!--  <a href="/apps/{{ singer.id }}/">{{ singer.singer_name}}</a>-->
+                        <!--  <span><button type="submit" class="btn btn-outline-success btn-sm" for="singer.sore{{ forloop.counter }}">{{ singer.sore }} それ！！</button></span>
+                              <span><a href="{% url 'apps:singer_del' singer_id=singer.id %}" class="btn btn-outline-danger btn-sm">削除</a></span>
+                            </h4>
+                        -->
+                          <!--<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>-->
+                        </div>
+                        <div class="timeline-body">
+                                <span>{{ singer.goldSong }}</span></br>
+                                <span>{{ singer.silverSong }}</span></br>
+                                <span>{{ singer.bronzeSong }}</span>
+                        </div>
+                      </div>
+                    </li>
+            </ul>
+
+            {% endfor %}
+
+              {% else %}
+                  <p>No singers are available.</p>
+              {% endif %}
+
+    </div>
+
+    {% block content %}
+    <div class="container1">
+        <form action="{% url 'apps:index' %}" method="post">
+        {% csrf_token %}
+         {% bootstrap_form form layout='horizontal' %}
+         <div class="form-group row">
+            <div class="offset-md-3 col-md-9">
+              <button type="submit" class="btn btn-success">送信</button>
+<!--          <input type="button" class="btn btn-warning" value="リロード" onclick="location.reload();" />-->
+            </div>
+          </div>
+        </form>
+    </div>
+    {% endblock content %}
+
+{% endblock %}
