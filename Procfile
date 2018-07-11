@@ -1,1 +1,1 @@
-web: gunicorn Sankyoku.wsgi --log-file -
+web: gunicorn mythreeDeploy.wsgi --log-file -
