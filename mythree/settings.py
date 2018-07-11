@@ -88,8 +88,6 @@ DATABASES = {
         'NAME': 'mythree',
         'USER': 'osuossu',
         'PASSWORD' : '1EC13037t',
-        'HOST': 'localhost',
-        'PORT': 5432,
     }
 }
 
