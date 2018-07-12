@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
+    'gunicorn',   ## ←この行追加
 ]
 
 MIDDLEWARE = [
