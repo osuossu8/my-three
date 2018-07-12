@@ -41,7 +41,7 @@ LOGGING = {
 }
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
+ALLOWED_HOSTS = [".herokuapp.com", ".researchthroughdesign.org"] 
 
 # Application definition
 
