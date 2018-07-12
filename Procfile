@@ -1,1 +1,1 @@
-web: gunicorn mythree.wsgi:app
+web: gunicorn mythree.wsgi --log-file -
