@@ -41,7 +41,7 @@ LOGGING = {
 }
 
 #ALLOWED_HOSTS = []
-ALLOWED_HOSTS = [".herokuapp.com", ".researchthroughdesign.org"] 
+ALLOWED_HOSTS = [".herokuapp.com", "*"] 
 
 # Application definition
 
