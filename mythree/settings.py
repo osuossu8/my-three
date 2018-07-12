@@ -40,8 +40,8 @@ LOGGING = {
     },
 }
 
-ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = [".herokuapp.com", "*"]
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["mythree.herokuapp.com"]
 
 # Application definition
 
