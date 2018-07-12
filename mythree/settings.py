@@ -41,7 +41,7 @@ LOGGING = {
 }
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ["mythree.herokuapp.com"]
+ALLOWED_HOSTS = ["mythree.herokuapp.com/apps/"]
 
 # Application definition
 
@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bootstrap4',
-    'gunicorn',   ## ←この行追加
 ]
 
 MIDDLEWARE = [
