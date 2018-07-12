@@ -41,7 +41,7 @@ LOGGING = {
 }
 
 #ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = ["mythree.herokuapp.com/apps/"]
+ALLOWED_HOSTS = ["mythree.herokuapp.com"]
 
 # Application definition
 
