@@ -1,1 +1,1 @@
-web: gunicorn mythreeDeploy.wsgi:app
+web: gunicorn mythree.wsgi:app
