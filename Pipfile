@@ -15,6 +15,8 @@ dj-static== "*"
 django-bootstrap4== "*"
 django-heroku== "*"
 static3== "*"
+PySocks== "*"
+pytz== "*"
 
 
 [requires]
