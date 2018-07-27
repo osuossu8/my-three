@@ -4,9 +4,58 @@
 
 {% block body %}
 
-        <div class="page-header">
-            <h1 id="timeline">TimeLine!</h1>
-        </div>
+<head>
+
+  <script>
+
+//画面ロード時に既にあるテキストを取得してURLに置換する。
+window.onload = function(){
+
+  //テーブルの列数（投稿数）を取得。
+          const counter = $(".timeline").length;
+          console.log(counter);
+  //APIから videoId のリストを引っ張ってくる。
+          fetch('http://127.0.0.1:8000/api/v1/youtube_search/')
+          .then(function(response) {
+            return response.json();
+          })
+          .then(function(myJson) {
+
+            //console.log(myJson);
+            for(var i=1;i<=counter;i++){
+
+              const vElement = "element"+i+"-1";
+              const vElement2 = "element"+i+"-2";
+              const vElement3 = "element"+i+"-3";
+
+              const vName = document.getElementById(vElement).innerText;
+              const vName2 = document.getElementById(vElement2).innerText;
+              const vName3 = document.getElementById(vElement3).innerText;
+
+              k1 = 3 * i - 3
+              k2 = 3 * i - 2
+              k3 = 3 * i - 1
+
+              const url= "https://www.youtube.com/watch?v=" + myJson[k1]
+              const url2= "https://www.youtube.com/watch?v=" + myJson[k2]
+              const url3= "https://www.youtube.com/watch?v=" + myJson[k3]
+
+              document.getElementById(vElement).innerHTML ="<a href="+url+">"+vName+"</a>";
+              document.getElementById(vElement2).innerHTML ="<a href="+url2+">"+vName2+"</a>";
+              document.getElementById(vElement3).innerHTML ="<a href="+url3+">"+vName3+"</a>";
+            }
+
+          });
+        }
+
+ </script>
+</head>
+
+    <div class="text-center">
+      <div class="page-header">
+          <h1 id="timeline">キイテミ！</h1>
+      </div>
+    </div>
 
     <div class="container">
             {% if latest_singer_list %}
@@ -20,17 +69,11 @@
                         <div class="timeline-heading">
                             <h4 class="timeline-title">
                               <p class="text-info">{{ singer.singer_name}}</p>
-                        <!--  <a href="/apps/{{ singer.id }}/">{{ singer.singer_name}}</a>-->
-                        <!--  <span><button type="submit" class="btn btn-outline-success btn-sm" for="singer.sore{{ forloop.counter }}">{{ singer.sore }} それ！！</button></span>
-                              <span><a href="{% url 'apps:singer_del' singer_id=singer.id %}" class="btn btn-outline-danger btn-sm">削除</a></span>
-                            </h4>
-                        -->
-                          <!--<p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 11 hours ago via Twitter</small></p>-->
                         </div>
                         <div class="timeline-body">
-                                <span>{{ singer.goldSong }}</span></br>
-                                <span>{{ singer.silverSong }}</span></br>
-                                <span>{{ singer.bronzeSong }}</span>
+                            <span id="element{{ forloop.counter }}-1">{{ singer.goldSong }}</span></br>
+                            <span id="element{{ forloop.counter }}-2">{{ singer.silverSong }}</span></br>
+                            <span id="element{{ forloop.counter }}-3">{{ singer.bronzeSong }}</span>
                         </div>
                       </div>
                     </li>
@@ -51,8 +94,7 @@
          {% bootstrap_form form layout='horizontal' %}
          <div class="form-group row">
             <div class="offset-md-3 col-md-9">
-              <button type="submit" class="btn btn-success">share♪</button>
-<!--          <input type="button" class="btn btn-warning" value="リロード" onclick="location.reload();" />-->
+              <button type="submit" class="btn btn-light text-success border border-success">share♪</button>
             </div>
           </div>
         </form>

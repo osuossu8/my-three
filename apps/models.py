@@ -14,6 +14,14 @@ class Singer(models.Model):
     def __str__(self):
         return self.singer_name
 
+    ### Djangoモデル を python辞書に変換する
+    def to_dict(self):
+
+        return {  "goldSong"  : self.goldSong,
+                  "silverSong": self.silverSong,
+                  "bronzeSong": self.bronzeSong,
+                }
+
 class Song(models.Model):
     singer = models.ForeignKey(Singer, on_delete=models.CASCADE)
     song_name = models.CharField(max_length=50)
