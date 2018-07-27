@@ -15,7 +15,7 @@ window.onload = function(){
           const counter = $(".timeline").length;
           console.log(counter);
   //APIから videoId のリストを引っ張ってくる。
-          fetch('http://127.0.0.1:8000/api/v1/youtube_search/')
+          fetch('http://mythree.herokuapp.com/api/v1/youtube_search/')
           .then(function(response) {
             return response.json();
           })

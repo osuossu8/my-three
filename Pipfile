@@ -17,6 +17,7 @@ django-heroku== "*"
 static3== "*"
 PySocks== "*"
 pytz== "*"
+requests== "*"
 
 
 [requires]
