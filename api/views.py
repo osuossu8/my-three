@@ -54,7 +54,6 @@ def youtube_search(request, song_name=None, singer=None):
 
 
         if SONG_NAME_1 != "":
-            #print(ly[abc]["goldSong"]+" "+lz[abc])
             url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_1  + "&type=videos"
             r1 = requests.get(url_1, headers=headers)
             data1 = r1.json()
@@ -62,7 +61,6 @@ def youtube_search(request, song_name=None, singer=None):
             vId_list.append(vId1)
 
         if SONG_NAME_2 != "":
-            #print(ly[abc]["silverSong"]+" "+lz[abc])
             url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_2  + "&type=videos"
             r2 = requests.get(url_2, headers=headers)
             data2 = r2.json()
@@ -72,7 +70,6 @@ def youtube_search(request, song_name=None, singer=None):
             print("no entry2")
 
         if SONG_NAME_3 != "":
-            #print(ly[abc]["bronzeSong"]+" "+lz[abc])
             url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_3  + "&type=videos"
             r3 = requests.get(url_3, headers=headers)
             data3 = r3.json()
