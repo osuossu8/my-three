@@ -48,7 +48,7 @@ def youtube_search(request, song_name=None, singer=None):
     for ln in item_data:
 
         SINGER_NAME = lz[abc]
-        moji = "."
+        moji = ""
         SONG_NAME_1 = ly[abc]["goldSong"]
         SONG_NAME_2 = ly[abc]["silverSong"]
         SONG_NAME_3 = ly[abc]["bronzeSong"]
