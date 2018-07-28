@@ -1,4 +1,4 @@
-import os import environ #環境変数を取得
+from os import environ #環境変数を取得
 
 import json
 from django.http import HttpResponse
