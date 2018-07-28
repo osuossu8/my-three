@@ -48,13 +48,14 @@ def youtube_search(request, song_name=None, singer=None):
     for ln in item_data:
 
         SINGER_NAME = lz[abc]
+        karamoji = " "
         SONG_NAME_1 = ly[abc]["goldSong"]
         SONG_NAME_2 = ly[abc]["silverSong"]
         SONG_NAME_3 = ly[abc]["bronzeSong"]
 
-        url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_1 + "&type=videos"
-        url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_2 + "&type=videos"
-        url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_3 + "&type=videos"
+        url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + karamoji + SONG_NAME_1 + "&type=videos"
+        url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + karamoji + SONG_NAME_2 + "&type=videos"
+        url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + karamoji + SONG_NAME_3 + "&type=videos"
 
         r1 = requests.get(url_1, headers=headers)
         data1 = r1.json()
