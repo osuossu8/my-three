@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from os import environ #環境変数を取得
 
 import json
@@ -59,7 +60,7 @@ def youtube_search(request, song_name=None, singer=None):
             data1 = r1.json()
             vId1 = data1["items"][1]["id"]["videoId"]
             vId_list.append(vId1)
-        """
+
         if SONG_NAME_2 != "":
             url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + SONG_NAME_2  + "&type=videos"
             r2 = requests.get(url_2, headers=headers)
@@ -68,7 +69,7 @@ def youtube_search(request, song_name=None, singer=None):
             vId_list.append(vId2)
         else:
             print("no entry2")
-        """
+        
         if SONG_NAME_3 != "":
             url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + SONG_NAME_3  + "&type=videos"
             r3 = requests.get(url_3, headers=headers)
@@ -77,7 +78,7 @@ def youtube_search(request, song_name=None, singer=None):
             vId_list.append(vId3)
         else:
             print("no entry3")
-        
+
         abc += 1
 
     print(vId_list)
