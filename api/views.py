@@ -1,3 +1,5 @@
+import os #環境変数を取得
+
 import json
 from django.http import HttpResponse
 import requests
