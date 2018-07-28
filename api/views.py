@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 from apps.models import Singer,Song
 from django.core import serializers
-from apps.config import youtubeKey
+#from apps.config import youtubeKey  @local
 
 """
 def render_json_response(request, data, status=None):
