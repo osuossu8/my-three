@@ -52,30 +52,37 @@ def youtube_search(request, song_name=None, singer=None):
         SONG_NAME_2 = ly[abc]["silverSong"]
         SONG_NAME_3 = ly[abc]["bronzeSong"]
 
-        moji1 = lz[abc] + "-" + ly[abc]["goldSong"]
-        moji2 = lz[abc] + "-" + ly[abc]["silverSong"]
-        moji3 = lz[abc] + "-" + ly[abc]["bronzeSong"]
 
-        url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_1 + "&type=videos"
-        url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_2 + "&type=videos"
-        url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_3 + "&type=videos"
+        if SONG_NAME_1 != "":
+            #print(ly[abc]["goldSong"]+" "+lz[abc])
+            url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_1  + "&type=videos"
+            r1 = requests.get(url_1, headers=headers)
+            data1 = r1.json()
+            vId1 = data1["items"][1]["id"]["videoId"]
+            vId_list.append(vId1)
 
-        r1 = requests.get(url_1, headers=headers)
-        data1 = r1.json()
-        vId1 = data1["items"][1]["id"]["videoId"]
+        if SONG_NAME_2 != "":
+            #print(ly[abc]["silverSong"]+" "+lz[abc])
+            url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_2  + "&type=videos"
+            r2 = requests.get(url_2, headers=headers)
+            data2 = r2.json()
+            vId2 = data2["items"][1]["id"]["videoId"]
+            vId_list.append(vId2)
+        else:
+            print("no entry2")
 
-        r2 = requests.get(url_2, headers=headers)
-        data2 = r2.json()
-        vId2 = data2["items"][1]["id"]["videoId"]
-        r3 = requests.get(url_3, headers=headers)
-        data3 = r3.json()
-        vId3 = data3["items"][1]["id"]["videoId"]
-
-        vId_list.append(vId1)
-        vId_list.append(vId2)
-        vId_list.append(vId3)
-        print(vId_list)
+        if SONG_NAME_3 != "":
+            #print(ly[abc]["bronzeSong"]+" "+lz[abc])
+            url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SINGER_NAME + "." + SONG_NAME_3  + "&type=videos"
+            r3 = requests.get(url_3, headers=headers)
+            data3 = r3.json()
+            vId3 = data3["items"][1]["id"]["videoId"]
+            vId_list.append(vId3)
+        else:
+            print("no entry3")
 
         abc += 1
+
+    print(vId_list)
 
     return render_json_response(request, vId_list) #JSON
