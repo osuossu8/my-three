@@ -1,4 +1,4 @@
-import os #環境変数を取得
+import os import environ #環境変数を取得
 
 import json
 from django.http import HttpResponse
@@ -26,7 +26,7 @@ def render_json_response(request, data, status=None):
 def youtube_search(request, song_name=None, singer=None):
 
 
-    YouTube_API_KEY = youtubeKey
+    YouTube_API_KEY = environ["youtubeKey"]
 
     item_data = Singer.objects.all()
 
