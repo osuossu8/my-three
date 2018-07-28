@@ -2,13 +2,13 @@ import os #環境変数を取得
 
 import json
 from django.http import HttpResponse
-import requests
+###import requests
 
 from apps.models import Singer,Song
 from django.core import serializers
 from apps.config import youtubeKey
 
-
+"""
 def render_json_response(request, data, status=None):
     #response を JSON で返却
     json_str = json.dumps(data, ensure_ascii=False, indent=2)
@@ -22,9 +22,12 @@ def render_json_response(request, data, status=None):
         response = HttpResponse(json_str, content_type='application/json; charset=UTF-8', status=status)
     return response
 
-
+"""
 def youtube_search(request, song_name=None, singer=None):
 
+    return
+
+"""
     YouTube_API_KEY = youtubeKey
 
     item_data = Singer.objects.all()
@@ -70,3 +73,4 @@ def youtube_search(request, song_name=None, singer=None):
         abc += 1
 
     return render_json_response(request, vId_list) #JSON
+"""
