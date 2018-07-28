@@ -52,9 +52,9 @@ def youtube_search(request, song_name=None, singer=None):
         SONG_NAME_2 = ly[abc]["silverSong"]
         SONG_NAME_3 = ly[abc]["bronzeSong"]
 
-        moji1 = lz[abc] + " " + ly[abc]["goldSong"]
-        moji2 = lz[abc] + " " + ly[abc]["silverSong"]
-        moji3 = lz[abc] + " " + ly[abc]["bronzeSong"]
+        moji1 = lz[abc] + "-" + ly[abc]["goldSong"]
+        moji2 = lz[abc] + "-" + ly[abc]["silverSong"]
+        moji3 = lz[abc] + "-" + ly[abc]["bronzeSong"]
 
         url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + moji1 + "&type=videos"
         url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + moji2 + "&type=videos"
