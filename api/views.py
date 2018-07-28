@@ -25,9 +25,7 @@ def render_json_response(request, data, status=None):
 
 def youtube_search(request, song_name=None, singer=None):
 
-    return
 
-"""
     YouTube_API_KEY = youtubeKey
 
     item_data = Singer.objects.all()
@@ -73,4 +71,3 @@ def youtube_search(request, song_name=None, singer=None):
         abc += 1
 
     return render_json_response(request, vId_list) #JSON
-"""
