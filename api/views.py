@@ -1,4 +1,4 @@
-# -*- coding:utf-8 -*-
+
 from os import environ #環境変数を取得
 
 import json
@@ -62,8 +62,17 @@ def youtube_search(request, song_name=None, singer=None):
 
             try:
                 vId1 = data1["items"][1]["id"].get("videoId", None)
-                print(vId1)
-                vId_list.append(vId1)
+                if vId1 != None:
+                    vId_list.append(vId1)
+                    print(vId1)
+                else:
+                    url_1 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_1  + "&type=videos"
+                    r1 = requests.get(url_1, headers=headers)
+                    data1 = r1.json()
+                    vId1 = data1["items"][1]["id"].get("videoId", None)
+                    vId_list.append(vId1)
+                    print(vId1)
+
             except KeyError:
                 return
 
@@ -74,8 +83,17 @@ def youtube_search(request, song_name=None, singer=None):
 
             try:
                 vId2 = data2["items"][1]["id"].get("videoId", None)
-                print(vId2)
-                vId_list.append(vId2)
+                if vId2 != None:
+                    vId_list.append(vId2)
+                    print(vId2)
+                else:
+                    url_2 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_2  + "&type=videos"
+                    r2 = requests.get(url_2, headers=headers)
+                    data2 = r2.json()
+                    vId2 = data2["items"][1]["id"].get("videoId", None)
+                    vId_list.append(vId2)
+                    print(vId2)
+
             except KeyError:
                 return
         else:
@@ -88,8 +106,17 @@ def youtube_search(request, song_name=None, singer=None):
 
             try:
                 vId3 = data3["items"][1]["id"].get("videoId", None)
-                print(vId3)
-                vId_list.append(vId3)
+                if vId3 != None:
+                    vId_list.append(vId3)
+                    print(vId3)
+                else:
+                    url_3 = "https://www.googleapis.com/youtube/v3/search?key=" + YouTube_API_KEY + "&part=snippet&q=" + SONG_NAME_3  + "&type=videos"
+                    r3 = requests.get(url_3, headers=headers)
+                    data3 = r3.json()
+                    vId3 = data3["items"][1]["id"].get("videoId", None)
+                    vId_list.append(vId3)
+                    print(vId3)
+                    
             except KeyError:
                 return
         else:
