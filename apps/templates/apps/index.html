@@ -15,13 +15,56 @@ window.onload = function(){
           const counter = $(".timeline").length;
           console.log(counter);
   //APIから videoId のリストを引っ張ってくる。
-          fetch('http://mythree.herokuapp.com/api/v1/youtube_search/')
+          //fetch('http://mythree.herokuapp.com/api/v1/youtube_search/')
+          fetch('http://mythree.herokuapp.com/api/iTunes_search/')
           .then(function(response) {
             return response.json();
           })
           .then(function(myJson) {
 
-            //console.log(myJson);
+      for(var i=1;i<=counter;i++){
+
+        k1 = 3 * i - 3
+        k2 = 3 * i - 2
+        k3 = 3 * i - 1
+
+        const vElement = "element"+i+"-1";//1-1,2-1,3-1   0,3,6
+        const srcId = "hoge"+i+"-1"
+        const vName = document.getElementById(vElement).innerText;
+        console.log(vName)
+        const vPlayer = document.getElementById(srcId);
+        const url= myJson[0][k1]
+        document.getElementById(vElement).innerHTML ="<a href="+url+">"+vName+"</a>";
+        vPlayer.src = myJson[2][k1]
+
+        //if( myJson[0][k2] != null ){
+        const vElement2 = "element"+i+"-2";//1-2,2-2,3-2  1,4,7
+        const srcId2 = "hoge"+i+"-2"
+        const vPlayer2 = document.getElementById(srcId2);
+        const url2= myJson[0][k2]
+        if(document.getElementById(vElement2) != null){
+          const vName2 = document.getElementById(vElement2).innerText;
+          console.log(vName2);
+        //if( vName2 != "" ){
+          document.getElementById(vElement2).innerHTML ="<a href="+url2+">"+vName2+"</a>";
+          vPlayer2.src = myJson[2][k2]
+        }
+
+        const vElement3 = "element"+i+"-3";//1-3,2-3,3-3  2,5,8
+        const srcId3 = "hoge"+i+"-3"
+        const vPlayer3 = document.getElementById(srcId3);
+        const url3= myJson[0][k3]
+        if(document.getElementById(vElement3) != null){
+          const vName3 = document.getElementById(vElement3).innerText;
+          console.log(vName3);
+        //if( vName3 != "" ){
+          document.getElementById(vElement3).innerHTML ="<a href="+url3+">"+vName3+"</a>";
+          vPlayer3.src = myJson[2][k3]
+        }
+
+      }
+
+            /*
             for(var i=1;i<=counter;i++){
 
               const vElement = "element"+i+"-1";
@@ -44,6 +87,7 @@ window.onload = function(){
               document.getElementById(vElement2).innerHTML ="<a href="+url2+">"+vName2+"</a>";
               document.getElementById(vElement3).innerHTML ="<a href="+url3+">"+vName3+"</a>";
             }
+            */
 
           });
         }
@@ -70,11 +114,25 @@ window.onload = function(){
                             <h4 class="timeline-title">
                               <p class="text-info">{{ singer.singer_name}}</p>
                         </div>
-                        <div class="timeline-body">
-                            <span id="element{{ forloop.counter }}-1">{{ singer.goldSong }}</span></br>
-                            <span id="element{{ forloop.counter }}-2">{{ singer.silverSong }}</span></br>
-                            <span id="element{{ forloop.counter }}-3">{{ singer.bronzeSong }}</span>
-                        </div>
+                        <div id="target{{ forloop.counter }}">
+                                    <div class="timeline-body">
+                                      <span id="element{{ forloop.counter }}-1">{{ singer.goldSong }}</span></br>
+                                      <audio id="hoge{{ forloop.counter }}-1" src="" controls></br>
+                                    </div>
+
+                                {% if singer.silverSong %}
+                                    <div class="timeline-body">
+                                      <span id="element{{ forloop.counter }}-2">{{ singer.silverSong }}</span></br>
+                                      <audio id="hoge{{ forloop.counter }}-2" src="" controls></br>
+                                    </div>
+                                {% endif %}
+                                {% if singer.bronzeSong %}
+                                    <div class="timeline-body">
+                                      <span id="element{{ forloop.counter }}-3">{{ singer.bronzeSong }}</span></br>
+                                      <audio id="hoge{{ forloop.counter }}-3" src="" controls></br>
+                                    </div>
+                                {% endif %}
+                            </div>
                       </div>
                     </li>
             </ul>
